@@ -254,12 +254,13 @@ def create_product(form):
     try:
         with connection.cursor() as cursor:
             if form['product_isFav'] == 'on':
-                x_favorite = '1'
+                x_favorite = 1
             else:
-                x_favorite = '0'
-            sql_create = "INSERT INTO products VALUES(Null,'{}','{}',{},'{}',{},'{}')"\
+                x_favorite = 0
+            sql_create = 'INSERT INTO products VALUES(Null,"{}","{}",{},"{}",{},{})'\
                 .format(form['product_title'],form['product_desc'],form['product_price'], form['product_img'],
                         form['product_category_id'], x_favorite)
+            print(sql_create)
             cursor.execute(sql_create)
             connection.commit()
             return cursor.lastrowid
