@@ -285,7 +285,7 @@ def get_product(id):
                 object = {
                     'STATUS': 'SUCCESS',
                     'MSG': "product fetched successfully",
-                    'PRODUCT': result['id'],
+                    'PRODUCT': result,
                     'CODE': "201"
                 }
                 return json.dumps(object)
