@@ -281,6 +281,7 @@ def get_product(id):
                 get_produt_sql = "SELECT id FROM products WHERE id={}".format(id)
                 cursor.execute(get_produt_sql)
                 result = cursor.fetchone()
+                print(result)
                 object = {
                     'STATUS': 'SUCCESS',
                     'MSG': "product fetched successfully",
@@ -292,6 +293,7 @@ def get_product(id):
                 object = {
                     'STATUS': 'ERROR',
                     'MSG': "product not found",
+                    'PRODUCT':"",
                     'CODE': "404"
                 }
                 return json.dumps(object)
@@ -299,7 +301,7 @@ def get_product(id):
         object = {
             'STATUS': 'ERROR',
             'MSG': "internal error",
-            "CATEGORIES": "",
+            "PRODUCT": "",
             'CODE': "500"
         }
         return json.dumps(object)
@@ -353,7 +355,7 @@ def get_products():
             object = {
                 'STATUS': 'SUCCESS',
                 'MSG': "",
-                'CATEGORIES': results,
+                'PRODUCTS': results,
                 'CODE': "200"
             }
             return json.dumps(object)
@@ -361,7 +363,7 @@ def get_products():
         object = {
             'STATUS': 'ERROR',
             'MSG': "internal error",
-            "CATEGORIES": "",
+            "PRODUCTS": "",
             'CODE': "500"
         }
         return json.dumps(object)
